@@ -1,0 +1,169 @@
+
+<div class='fixed-top bg-dark text-white text-center'>
+
+    <img src='https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/filmreel-512.png'
+    style='float: left; width: 80px; margin-left: 10px; margin-top: 10px'>
+
+    <img src='https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/video-512.png'
+    style='float: right; width: 80px; margin: 10px 10px 0 0'>
+
+    <h1 class="m-4"><b>Filmes Oscar 2020</b></h1>
+
+</div>
+
+<div style="text-align: rigth; margin-top:95px;" class="bg-secondary p-2 pr-4" id="menu">
+    <span class="mr-3">
+        <a style="float: right" data-toggle='modal' data-target='#login' (click)='login.show()'>
+            <i class="fas fa-sign-in-alt mr-2"></i> Logar
+        </a>
+
+        <a style="float: right; margin-right: 20px" data-toggle='modal' data-target='#cad' (click)='cad.show()'>
+            <i class="fas fa-user-plus mr-2"></i> Cadastro
+        </a>
+    </span>
+</div>
+
+<div class="pt-3 container-fluid bg-light pb-5">
+  <div class="row">
+    <div class="col-md-6 mb-3" *ngFor='let f of filmes'>
+      <mdb-card class="shadow">
+        <img [src]='f.imagem' class="img-thumbnail m-3 shadow" style="height: 298px;">
+          <mdb-card-body>
+            <mdb-card-title>
+              <h3 class="text-center">{{ f.nome }}</h3>
+              <h5>
+                <i class="fa fa-star text-warning mr-3"></i>
+                Categoria: {{ f.categoria }}
+              </h5>
+            </mdb-card-title>
+          </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
+
+<!--Modal Login-->
+<div mdbModal #login='mdbModal' class="modal fade left" id="login"
+tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center bg-dark text-white">
+        <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+        <button type="button" class="close" data-dismiss='modal'
+        (click)='login.hide()'>
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="md-form mb-5">
+
+          <mdb-icon fas icon='envelope'
+          class="prefix grey-text">
+          </mdb-icon>
+
+          <input type="email" id='email' class="form-control"
+          mdbInput [(ngModel)]='usuario.email'>
+
+          <label for="email">Seu e-mail</label>
+
+        </div>
+
+        <div class="md-form mb-5">
+
+          <mdb-icon fas icon='lock'
+            class="prefix grey-text">
+            </mdb-icon>
+
+          <input type="password" id='password' class="form-control"
+          mdbInput [(ngModel)]='usuario.senha'>
+          <label for="password">Sua senha</label>
+
+        </div>
+
+          <div class="modal-footer d-flex justify-content-center">
+
+              <button mdbBtn color='dark' mdbWavesEffect
+              (click)='logar();'>Login</button>
+
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!--Modal Cadastro-->
+<div mdbModal #cad='mdbModal' class="modal fade right" id="cad"
+tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center bg-secondary text-white">
+        <h4 class="modal-title w-100 font-weight-bold">Cadastro</h4>
+        <button type="button" class="close" data-dismiss='modal'
+        (click)='cad.hide()'>
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <!--Nome-->
+        <div class="md-form mb-5">
+
+            <mdb-icon fas icon='user'
+            class="prefix grey-text">
+            </mdb-icon>
+
+            <input type="text" id='nome' class="form-control"
+            mdbInput [(ngModel)]='usuario.nome'>
+
+            <label for="email">Seu Nome</label>
+
+          </div>
+
+        <!--email-->
+        <div class="md-form mb-5">
+
+          <mdb-icon fas icon='envelope'
+          class="prefix grey-text">
+          </mdb-icon>
+
+          <input type="email" id='email' class="form-control"
+          mdbInput [(ngModel)]='usuario.email'>
+
+          <label for="email">Seu e-mail</label>
+
+        </div>
+
+        <!--senha-->
+        <div class="md-form mb-5">
+
+          <mdb-icon fas icon='lock'
+            class="prefix grey-text">
+            </mdb-icon>
+
+          <input type="password" id='password' class="form-control"
+          mdbInput [(ngModel)]='usuario.senha'>
+          <label for="password">Sua senha</label>
+
+        </div>
+
+          <div class="modal-footer d-flex justify-content-center">
+
+              <button mdbBtn color='dark' mdbWavesEffect
+              (click)='cadastro();'>Cadastro</button>
+
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
